@@ -25,7 +25,8 @@ module.exports = function(grunt) {
             },
             dist: {
                 src: [
-                    'vendor/angular/*.js',
+                    'vendor/angular/angular.min.js',
+                    'vendor/angular/angular-*.js',
                     'scripts/**/*.js', // cualquier archivo .js dentro de alguna subcarpeta de scripts
                     'scripts/app.js'
                 ],
