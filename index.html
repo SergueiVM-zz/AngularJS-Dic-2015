@@ -5,7 +5,7 @@
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="MenuController">
   <div class="container-fluid">
     <div class="navbar-header">
         <a class="navbar-brand" href="#">
@@ -14,9 +14,15 @@
       </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#/movies">Movies</a></li>
-        <li><a href="#/series">Series</a></li>
-        <li><a href="#/people">People</a></li>
+        <li ng-class="classForItem('movies')">
+          <a href="#/movies" ng-click="setActiveItem('movies')">Movies</a>
+        </li>
+        <li ng-class="classForItem('series')">
+          <a href="#/series" ng-click="setActiveItem('series')">Series</a>
+        </li>
+        <li ng-class="classForItem('people')">
+          <a href="#/people" ng-click="setActiveItem('people')">People</a>
+        </li>
       </ul>
     </div>
   </div>
