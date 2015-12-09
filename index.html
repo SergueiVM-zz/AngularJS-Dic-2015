@@ -3,6 +3,7 @@
   <head>
       <title>{{ title }} | Movie Db Angular</title>
       <link rel="stylesheet" type="text/css" href="styles/style.css">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   </head>
   <body>
     <nav class="navbar navbar-default" ng-controller="MenuController">
@@ -27,7 +28,13 @@
         </div>
       </div>
     </nav>
-    <section ng-view></section>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <section ng-view></section>
+        </div>
+      </div>
+    </div>
     <script src="dist/built.js"></script>
   </body>
 </html>
