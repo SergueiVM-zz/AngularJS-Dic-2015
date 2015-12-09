@@ -5,6 +5,7 @@ angular.module("MovieDbApp").controller("MenuController", ["$scope", function($s
     // actualiza el valor activeItem del scope
     $scope.setActiveItem = function(activeItemId) {
         this.activeItem = activeItemId;
+        this.$emit("ChangePageTitle", this.getPageTitle(activeItemId));
     };
 
     // devuelve la clase CSS a utilizar en función del itemId
@@ -15,5 +16,17 @@ angular.module("MovieDbApp").controller("MenuController", ["$scope", function($s
             return '';
         }
     };
+
+    // devuelve el título de página deseado en función del activeItemId pasado
+    $scope.getPageTitle = function(activeItemId) {
+        switch (activeItemId) {
+            case "movies":
+                return "Movies list";
+            case "series":
+                return "Series list";
+            case "people":
+                return "People list";
+        }
+    }
 
 }]);
