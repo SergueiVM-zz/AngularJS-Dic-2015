@@ -1,5 +1,5 @@
 angular.module("MovieDbApp").controller("MoviesController",
-    ["$scope", "$http", function($scope, $http){
+    ["$scope", "$http", "$log", function($scope, $http, $log){
 
     // Inicialización del scope
     $scope.loading = false;
@@ -15,7 +15,7 @@ angular.module("MovieDbApp").controller("MoviesController",
             $scope.loading = false;
         },
         function(){ // la petición ha ido mal
-            console.error("Error while retrieving movies");
+            $log.error("Error while retrieving movies");
             $scope.error = "Error while retrieving movies";
             $scope.loading = false;
         }

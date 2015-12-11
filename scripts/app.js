@@ -6,6 +6,7 @@ app.config(["$routeProvider", function($routeProvider) {
         controller: "MoviesController",
         templateUrl: "views/Movies.html"
     }).when("/series", {
+        controller: "SeriesController",
         templateUrl: "views/Series.html"
     }).when("/people", {
         templateUrl: "views/People.html"
