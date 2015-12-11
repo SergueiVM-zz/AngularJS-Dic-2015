@@ -1,1 +1,22 @@
 <h1>People</h1>
+
+<div class="alert alert-info" ng-show="people.length == 0 && !loading && !error">
+    No people here :-(
+</div>
+
+<div class="alert alert-danger" ng-show="error">{{ error }}</div>
+
+<div class="text-center" ng-show="loading">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+</div>
+
+<div class="people grid">
+    <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2" ng-repeat="person in people">
+            <div class="person">
+                <img class="img-responsive" ng-src="{{ person.photo_url }}">
+                <h4>{{ person.name }}</h4>
+            </div>
+        </div>
+    </div>
+</div>

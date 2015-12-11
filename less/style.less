@@ -1,2 +1,13 @@
 @import "bootstrap/bootstrap.less";
-@hello: "World";
+
+.people.grid {
+    .person {
+        height: 15%;
+        overflow: hidden;
+        @media (min-width: @screen-sm-min) { height: 425px; }
+        @media (min-width: @screen-md-min) { height: 400px; }
+        @media (min-width: @screen-lg-min) { height: 350px; }
+    }
+}
+
+.row div[class*="col-"] { transition: width 0.25s; }

@@ -1,5 +1,5 @@
 angular.module("MovieDbApp").controller("MoviesController",
-    ["$scope", "$http", "$log", function($scope, $http, $log){
+    ["$scope", "MovieDbApiClient", "$log", function($scope, MovieDbApiClient, $log){
 
     // Inicialización del scope
     $scope.loading = false;
@@ -9,7 +9,7 @@ angular.module("MovieDbApp").controller("MoviesController",
     // Recuperamos del servidor el listado de películas
     $scope.loading = true;
     $scope.error = null;
-    $http.get("/api/movies/").then(
+    MovieDbApiClient.getMovies().then(
         function(response){ // la petición ha ido bien
             $scope.movies = response.data;
             $scope.loading = false;
