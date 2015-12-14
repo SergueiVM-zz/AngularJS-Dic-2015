@@ -10,39 +10,4 @@
     <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
 </div>
 
-<select class="pull-right" ng-model="orderby">
-    <option value="-rating">Rating DESC</option>
-    <option value="rating">Rating ASC</option>
-    <option value="-date">Year DESC</option>
-    <option value="date">Year ASC</option>
-    <option value="-title">Title DESC</option>
-    <option value="title">Title ASC</option>
-</select>
-
-
-<select class="pull-right" ng-model="page">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-</select>
-
-<table class="table table-striped table-hover" ng-show="series.length > 0">
-    <thead>
-        <tr>
-            <th>Poster</th>
-            <th>Title</th>
-            <th>Rating</th>
-            <th>Year</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="serie in series | orderBy:orderby | limitTo:2:page*2">
-            <td>
-                <img ng-src="{{ serie.poster_url }}" height="150">
-            </td>
-            <td>{{ serie.title }}</td>
-            <td>{{ serie.rating }}</td>
-            <td>{{ serie.date | date:"yyyy" }}</td>
-        </tr>
-    </tbody>
-</table>
+<media-list items="series"></media-list>
