@@ -16,7 +16,16 @@
         <p ng-if="item.tagline">{{ item.tagline }}</p>
         <ul class="list-group">
           <li class="list-group-item">
-                <strong>Categories:</strong> {{ item.categories | json }}
+                <strong>Categories:</strong>
+                <span ng-repeat="category in item.categories">
+                  <span class="sprite sprite-space" ng-if="category=='Adventure'"></span>
+                  <span class="sprite sprite-action" ng-if="category=='Action'"></span>
+                  <span class="sprite sprite-action" ng-if="category=='Western'"></span>
+                  <span class="sprite sprite-sci-fi" ng-if="category=='Science Fiction'"></span>
+                  <span class="sprite sprite-drama" ng-if="category=='Drama'"></span>
+                  <span class="sprite sprite-police" ng-if="category=='Thriller'"></span>
+                  <span class="sprite sprite-humor" ng-if="category=='Comedy'"></span>
+                </span>
           </li>
           <li class="list-group-item">
               <strong>Rating:</strong> {{ item.rating }}
