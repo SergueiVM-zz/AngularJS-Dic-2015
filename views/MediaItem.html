@@ -1,1 +1,29 @@
-<h1>Media Item</h1>
+<div class="alert alert-danger" ng-show="error">{{ error }}</div>
+
+<div class="text-center" ng-show="loading">
+    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+</div>
+
+<div class="row" ng-hide="loading || error">
+    <div class="col-xs-12 col-md-3">
+        <img class="img-responsive" ng-src="{{ item.poster_url }}">
+    </div>
+    <div class="col-xs-12 col-md-9">
+        <h1>{{ item.title }}</h1>
+        <h2>Overview</h2>
+        <p>{{ item.overview }}</p>
+        <h3 ng-if="item.tagline">Tagline</h3>
+        <p ng-if="item.tagline">{{ item.tagline }}</p>
+        <ul class="list-group">
+          <li class="list-group-item">
+                <strong>Categories:</strong> {{ item.categories | json }}
+          </li>
+          <li class="list-group-item">
+              <strong>Rating:</strong> {{ item.rating }}
+          </li>
+          <li class="list-group-item">
+                <strong>Date:</strong> {{ item.date | date:"dd/MM/yyyy" }}
+          </li>
+        </ul>
+    </div>
+</div>
