@@ -30,8 +30,9 @@
           <li class="list-group-item">
               <strong>Rating:</strong> {{ item.rating }}
           </li>
-          <li class="list-group-item">
+          <li class="list-group-item" ng-if="item">
                 <strong>Date:</strong> {{ item.date | date:"dd/MM/yyyy" }}
+                ({{ item.date | ago }})
           </li>
         </ul>
     </div>
