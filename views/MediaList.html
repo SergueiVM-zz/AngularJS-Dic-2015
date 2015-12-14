@@ -17,7 +17,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr ng-repeat="item in items | orderBy:orderby">
+        <tr ng-repeat="item in items | orderBy:orderby" ng-click="itemSelected({media: item})">
             <td>
                 <img ng-src="{{ item.poster_url }}" height="150">
             </td>

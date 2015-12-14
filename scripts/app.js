@@ -10,9 +10,13 @@ app.config(["$routeProvider", "MovieDbApiClientConstants",
     $routeProvider.when("/movies", {
         controller: "MoviesController",
         templateUrl: "views/Movies.html"
+    }).when("/movies/:id", {
+        templateUrl: "views/MediaItem.html"
     }).when("/series", {
         controller: "SeriesController",
         templateUrl: "views/Series.html"
+    }).when("/series/:id", {
+        templateUrl: "views/MediaItem.html"
     }).when("/people", {
         controller: "PeopleController",
         templateUrl: "views/People.html"
