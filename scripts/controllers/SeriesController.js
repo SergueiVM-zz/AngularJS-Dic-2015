@@ -5,6 +5,8 @@ angular.module("MovieDbApp").controller("SeriesController",
         $scope.series = [];
         $scope.loading = false;
         $scope.error = null;
+        $scope.page = "1";
+        $scope.orderby = '-rating';
 
         // Recuperamos el listado de series del API REST
         $scope.loading = true;
