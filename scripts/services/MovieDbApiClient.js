@@ -42,5 +42,27 @@ angular.module("MovieDbApp").service("MovieDbApiClient",
             return $http.get(this.getURL("people/"));
         };
 
+        this.saveSerie = function(serie) {
+            // crear una serie existe con el método POST
+            if (typeof(serie.id) == "undefined")
+                return $http.post(this.getURL("series/"), serie);
+            else {
+                // actualizar una serie existe con el método PUT
+                var url = "series/" + serie.id;
+                return $http.put(this.getURL(url), serie);
+            }
+        };
+
+        this.saveMovie = function(movie) {
+            // crear una película existe con el método POST
+            if (typeof(movie.id) == "undefined")
+                return $http.post(this.getURL("movies/"), movie);
+            else {
+                // actualizar una película existe con el método PUT
+                var url = "movies/" + movie.id;
+                return $http.put(this.getURL(url), movie);
+            }
+        };
+
     }]
 );

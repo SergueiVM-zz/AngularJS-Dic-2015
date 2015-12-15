@@ -16,6 +16,9 @@ app.config(["$routeProvider", "MovieDbApiClientConstants",
     }).when("/series", {
         controller: "SeriesController",
         templateUrl: "views/Series.html"
+    }).when("/series/new", {
+        controller: "SerieFormController",
+        templateUrl: "views/SerieForm.html"
     }).when("/series/:id", {
         controller: "SerieDetailController",
         templateUrl: "views/MediaItem.html"

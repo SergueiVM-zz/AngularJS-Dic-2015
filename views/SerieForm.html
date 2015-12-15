@@ -1,0 +1,56 @@
+<h1>New Serie</h1>
+
+<div class="alert alert-success" ng-show="success">{{ success }}</div>
+<div class="alert alert-danger" ng-show="error">{{ error }}</div>
+
+<form name="serieForm" novalidate ng-submit="saveSerie()">
+    <div class="form-group">
+        <input type="text" class="form-control" name="title" placeholder="Title"
+        ng-model="model.title" required>
+        <div class="errors" ng-show="serieForm.title.$invalid && serieForm.title.$touched">
+            <p>This field is required</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <textarea class="form-control" placeholder="Overview" name="overview"
+        ng-model="model.overview"></textarea>
+    </div>
+    <div class="form-group">
+        <input type="url" class="form-control" placeholder="Poster URL"
+        name="poster_url" ng-model="model.poster_url" required
+        ng-model-options="{updateOn: 'blur'}">
+        <div class="errors" ng-show="serieForm.poster_url.$invalid && serieForm.poster_url.$touched">
+            <p ng-show="serieForm.poster_url.$error.required">This field is required</p>
+            <p ng-show="serieForm.poster_url.$error.url">Is not a valid URL.</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="date" class="form-control" placeholder="Release date"
+        name="date" ng-model="model.date" required>
+        <div class="errors" ng-show="serieForm.date.$invalid && serieForm.date.$touched">
+            <p ng-show="serieForm.date.$error.required">This field is required. Fill a correct date.</p>
+            <p ng-show="serieForm.date.$error.date">Is not a valid date.</p>
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="number" class="form-control" placeholder="Rating"
+        name="rating" ng-model="model.rating" required min="0" max="10">
+        <div class="errors" ng-show="serieForm.rating.$invalid && serieForm.rating.$touched">
+            <p ng-show="serieForm.rating.$error.required">This field is required.</p>
+            <p ng-show="serieForm.rating.$error.number">Is not a valid number.</p>
+            <p ng-show="serieForm.rating.$error.max">Max allowed value is 10.</p>
+            <p ng-show="serieForm.rating.$error.min">Min allowed value is 0.</p>
+        </div>
+    </div>
+    <ul>
+      <li ng-repeat="category in categories">
+        <div class="checkbox">
+            <label>
+              <input type="checkbox" ng-model="selectedCategories[category]">
+              {{ category }}
+            </label>
+        </div>
+      </li>
+    </ul>
+    <button type="submit" class="btn btn-primary" ng-disabled="serieForm.$invalid">Save</button>
+</form>
