@@ -1,5 +1,7 @@
 angular.module("MovieDbApp").filter("ago", function(){
     return function(value) {
+        if (typeof(value) === "undefined")
+            return "";
         var dateParts = value.split("-");  // value -> YYYY-MM-DD
         var year = parseInt(dateParts[0]);
         var month = parseInt(dateParts[1]);
