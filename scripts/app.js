@@ -1,14 +1,13 @@
 var app = angular.module("MovieDbApp", ["ngRoute"]);
 
-app.config(["$routeProvider", "MovieDbApiClientConstants",
-    function($routeProvider, MovieDbApiClientConstants) {
+app.config(["$routeProvider", "$httpProvider", "MovieDbApiClientConstants",
+    function($routeProvider, $httpProvider, MovieDbApiClientConstants) {
 
     // Configuro MovieDbApiClient
     MovieDbApiClientConstants.apiHost = 'localhost:8000';
 
     // Defino rutas de aplicación
     $routeProvider.when("/movies", {
-        controller: "MoviesController",
         templateUrl: "views/Movies.html"
     }).when("/movies/:id", {
         controller: "MovieDetailController",
@@ -28,5 +27,19 @@ app.config(["$routeProvider", "MovieDbApiClientConstants",
     }).otherwise({
         templateUrl: "views/404.html"
     });
+
+    // Interceptor HTTP
+    $httpProvider.interceptors.push(["$location", function($location) {
+        return {
+            'response': function(response) {
+                console.log("HTTP RESPONSE INTERCEPTOR", response);
+                if (response.status == 401) {
+                    alert("No estás autorizado");
+                    $location.url("http://www.google.com/");
+                }
+                return response;
+            }
+        };
+    }]);
 
 }]);

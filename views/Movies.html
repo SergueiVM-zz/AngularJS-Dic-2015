@@ -1,13 +1,24 @@
-<h1>Movies</h1>
-
-<div class="alert alert-info" ng-show="movies.length == 0 && !loading && !error">
-    No movies here :-(
+<div class="row">
+    <div class="col-md-9" ng-controller="MoviesController">
+        <h1>Movies</h1>
+        <div class="alert alert-info" ng-show="movies.length == 0 && !loading && !error">
+            No movies here :-(
+        </div>
+        <div class="alert alert-danger" ng-show="error">{{ error }}</div>
+        <div class="text-center" ng-show="loading">
+            <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
+        </div>
+        <media-list items="movies" item-selected="movieSelected(media)"></media-list>
+    </div>
+    <div class="col-md-3" ng-controller="FavouriteMoviesControlller">
+        <h3>Favourite Movies</h3>
+        <div>
+            <ul class="list-group">
+                <li class="list-group-item" ng-repeat="movie in movies">
+                    {{ movie.title }}
+                    <button class="btn btn-sm btn-default" ng-click="deleteMovie(movie)">Delete</button>
+                </li>
+            </ul>
+        </div>
+    </div>
 </div>
-
-<div class="alert alert-danger" ng-show="error">{{ error }}</div>
-
-<div class="text-center" ng-show="loading">
-    <i class="fa fa-circle-o-notch fa-spin fa-3x"></i>
-</div>
-
-<media-list items="movies" item-selected="movieSelected(media)"></media-list>

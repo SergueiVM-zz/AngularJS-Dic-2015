@@ -1,6 +1,6 @@
 angular.module("MovieDbApp").controller("MoviesController",
-    ["$scope", "MovieDbApiClient", "$log", "$location",
-    function($scope, MovieDbApiClient, $log, $location){
+    ["$scope", "MovieDbApiClient", "$log", "$location", "PubSub",
+    function($scope, MovieDbApiClient, $log, $location, PubSub){
 
     // Inicialización del scope
     $scope.loading = false;
@@ -24,7 +24,8 @@ angular.module("MovieDbApp").controller("MoviesController",
 
     // Métodos
     $scope.movieSelected = function(movie) {
-        $location.url("/movies/" + movie.id);
+        // $location.url("/movies/" + movie.id);
+        PubSub.publish("addFavouriteMovie", movie);
     };
 
 }]);
